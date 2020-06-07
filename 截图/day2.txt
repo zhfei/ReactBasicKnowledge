@@ -1,0 +1,37 @@
+react安装过程：
+
+zhoufeideMacBook-Pro-2:React_Day2 zhoufei$ cnpm init -y
+Wrote to /Users/zhoufei/Documents/React/React_Day2/package.json:
+
+{
+  "name": "React_Day2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+
+
+zhoufeideMacBook-Pro-2:React_Day2 zhoufei$ cnpm install react --save
+✔ Installed 1 packages
+✔ Linked 5 latest versions
+✔ Run 0 scripts
+✔ All packages installed (6 packages installed from npm registry, used 1s(network 1s), speed 115.92kB/s, json 6(32.2kB), tarball 93.23kB)
+zhoufeideMacBook-Pro-2:React_Day2 zhoufei$ cnpm install react-dom --save
+✔ Installed 1 packages
+✔ Linked 5 latest versions
+✔ Run 0 scripts
+✔ All packages installed (2 packages installed from npm registry, used 1s(network 1s), speed 570.74kB/s, json 6(46.42kB), tarball 753.76kB)
+zhoufeideMacBook-Pro-2:React_Day2 zhoufei$ cnpm install babel-standalone --save
+✔ Installed 1 packages
+✔ Linked 0 latest versions
+✔ Run 0 scripts
+✔ All packages installed (1 packages installed from npm registry, used 964ms(network 963ms), speed 643.69kB/s, json 1(14.55kB), tarball 605.32kB)
+zhoufeideMacBook-Pro-2:React_Day2 zhoufei$ 
+
+
