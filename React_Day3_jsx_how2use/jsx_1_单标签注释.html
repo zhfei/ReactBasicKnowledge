@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单标签注释</title>
+
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="demoReact">
+    </div>
+
+    
+    <script type="text/babel">
+        //1.在标签中如何进行注释？
+        let myDemo = <div>
+                    {/* 这是一个单行标签注释 */}
+                    hello world
+                    </div>
+        ReactDOM.render(myDemo,document.getElementById('demoReact'))
+    </script>
+    
+</body>
+</html>

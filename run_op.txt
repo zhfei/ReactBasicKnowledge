@@ -1,0 +1,12 @@
+cnpm install react --save
+
+cnpm install react-dom --save
+
+cnpm install babel-standalone --save
+
+
+
+
+
+
+

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsx使用变量表达式</title>
+
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.min.js"></script>
+
+    <style>
+        .demoClass{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="rootDiv">
+
+    </div>
+
+    <script type="text/babel">
+        //1.使用表达式的方式：{表达式}
+        let text = '你好'
+        let myDom = <div>这是一个引用变量的标签，变量值为：{text}</div>
+
+        //2
+        let num = 202
+
+        //3
+        function userInfo(obj){
+            return '姓名：'+obj.name+" 年龄："+obj.age;
+        }
+        let user = {
+            'name':'小明',
+            'age':33
+        }
+        
+        //4
+        let phone = 3999
+
+
+        //5
+        var arr = [
+            <p>新闻列表1</p>,
+            <p>新闻列表1</p>,
+            <p>新闻列表1</p>,
+            <p>新闻列表1</p>,
+            <p>新闻列表1</p>,
+            <p>新闻列表1</p>,
+        ]
+
+        //6
+        let a_text = '百度链接'
+        let a_link = 'http://www.baidu.com'
+        let modStyle = {color:'red',backgroundColor:'pink'}
+
+        let myDom2 = (<div>
+                        {/*多个表达式引用*/}
+                        <div>文字引用表达式:{text}</div>
+                        <div>数字引用表达式：{num}</div>
+
+                        {/*2.计算操作*/}
+                        <div>计算操作：{num+100}</div>
+
+                        {/*3.函数调用*/}
+                        <div>函数调用：{userInfo(user)}</div>
+
+                        {/*4.三目运算符*/}
+                        <div>三目运算符的使用：当前手机价格是{phone} --- {phone>4000?'很贵':'很便宜'}</div>
+
+                        {/*5.数组渲染*/}
+                        <div>{arr}</div>
+
+                        {/*6.属性设置*/}
+                        <a href={a_link}>{a_text}</a>
+                        <p style={modStyle}>段落使用jsx设置样式</p>
+                        {/*jsx中不能使用class这个属性，因为class为js的关键字,使用className替换*/}
+                        <p className='demoClass'>段落使用jsx中的class属性设置样式</p>
+
+
+                    </div>)
+
+        ReactDOM.render(myDom2, document.getElementById('rootDiv'))
+    </script>
+    
+</body>
+</html>

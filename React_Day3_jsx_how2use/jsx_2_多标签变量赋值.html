@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多标签注释</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.min.js"></script>
+</head>
+<body>
+
+    <div id="rootDiv">
+
+    </div>
+
+    <script type="text/babel">
+        //2.多标签如何使用？
+        // 多标签要用一个富标签包裹
+        let myDomo_mul = (<div>
+            <div>hello world</div>
+            <div>你好 世界</div>
+        </div>)
+        ReactDOM.render(myDomo_mul, document.getElementById('rootDiv'))
+    </script>
+    
+</body>
+</html>
