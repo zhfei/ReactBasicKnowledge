@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>通过React，实现打开关闭列表</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.min.js"></script>
+</head>
+<body bgcolor="#f5f5dc">
+    <div id="rootReact">
+
+    </div>
+
+    <script type="text/babel">
+
+        var show = false
+        let MyComSub = (props)=>{
+            return (
+                <div style={{display:show?'block':'none'}}>
+                    <div>获奖名单</div>
+                    {
+                        props.arr.map((v,i)=>{
+                            return <p key={i}>{v}</p>
+                        })
+                    }
+                </div>
+            )
+        }
+
+        let arr = ['小米','jack','lucy']
+        let MyCom = ()=>{
+            return (
+                <div onClick={()=>{show=!show; console.log(show); render()}}>
+                    我是父组件
+                    <MyComSub arr={arr}/>
+                </div>
+            )
+        }
+
+        function render() {
+            ReactDOM.render(<MyCom/>,document.getElementById('rootReact'));
+        }
+
+        render()
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>遍历对象属性</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+        <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+        <script src="node_modules/babel-standalone/babel.min.js"></script>
+</head>
+<body bgcolor="#f5f5dc">
+    <div id="rootReact">
+
+    </div>
+
+    <script type="text/babel">
+
+        let person = {
+            name:'jim',
+            age:18,
+            sex:'男'
+        }
+
+        //两者的区别是：.方法比较方便一些。如果是遍历用['']比较方便
+        console.log(person.name)
+        console.log(person['name'])
+
+        let myDom = (
+            <div>
+                {Object.keys(person).map((value,index)=>{
+                    return <p key={index}>遍历对象，属性为：{value} -- 属性值为：{person[value]}</p>
+                })}
+            </div>
+        )
+
+        ReactDOM.render(myDom,document.getElementById('rootReact'));
+    </script>
+</body>
+</html>

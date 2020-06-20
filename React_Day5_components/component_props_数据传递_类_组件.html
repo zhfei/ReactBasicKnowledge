@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件间数据传递</title>
+
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.min.js"></script>
+
+</head>
+<body>
+
+    <div id="rootDiv">
+
+    </div>
+
+    <!--类组件传递参数-->
+    <script type="text/babel">
+
+        class MyClassCom extends React.Component{
+            render(){
+                return (
+                    <div>
+                        这是类组件，接收到的参数是: name:{this.props.name} -- age:{this.props.age}
+                    </div>
+                )
+            }
+        }
+        //属性传递
+        let com = <MyClassCom name="类组件 小米" age="33"/>
+        ReactDOM.render(com, document.getElementById('rootDiv'))
+    </script>
+
+    <script type="text/babel">
+
+        class MyClassCom extends React.Component{
+            render(){
+                return (
+                    <div>
+                        这是类组件，接收到的对象参数是: name:{this.props.name} -- age:{this.props.age}
+                    </div>
+                )
+            }
+        }
+
+        //对象传递
+        let item = {
+            name:'小米，小米',
+            age:19
+        }
+        let com = <MyClassCom {...item}/>
+        ReactDOM.render(com, document.getElementById('rootDiv'))
+    </script>
+
+
+</body>
+</html>

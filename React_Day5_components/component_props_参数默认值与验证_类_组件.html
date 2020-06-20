@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件参数默认值与参数值验证</title>
+
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.min.js"></script>
+
+    <script src="node_modules/prop-types/prop-types.js"></script>
+</head>
+<body>
+
+    <div id="rootDiv">
+
+    </div>
+
+    <!--类组件传递参数-->
+    <script type="text/babel">
+
+        class MyClassCom extends React.Component{
+            static defaultProps={
+                name:'这是类组件中name的默认值，设置默认值的第二种方法'
+            }
+            render(){
+                return (
+                    <div>
+                        我是类组件，传递的参数是：name:{this.props.name} -- age:{this.props.age}
+                    </div>
+                )
+            }
+        }
+
+
+        //默认属性值
+        MyClassCom.defaultProps={
+            name:'我是类组件中name属性的默认值',
+            age:'我是类组件中age属性的默认值'
+        }
+
+        //属性值验证
+        MyClassCom.propTypes={
+            name:PropTypes.number //name属性需要为number类型
+        }
+//        let com = <MyClassCom />
+
+        //属性传递
+        let nm = 123
+        let com = <MyClassCom name={nm} age="33"/>
+        ReactDOM.render(com, document.getElementById('rootDiv'))
+    </script>
+
+    <script type="text/babel">
+
+        class MyClassCom extends React.Component{
+            static defaultProps={
+                name:'这是类组件中name的默认值，设置默认值的第二种方法'
+            }
+            render(){
+                return (
+                        <div>
+                            我是类组件，传递的参数是：name:{this.props.name} -- age:{this.props.age}
+                        </div>
+                )
+            }
+        }
+
+        MyClassCom.defaultProps={
+            age:'第一中设置默认值的方法'
+        }
+
+
+        MyClassCom.propTypes={
+            name:PropTypes.string //属性值类型为字符串
+        }
+
+
+        //对象传递
+        let item = {
+            name:'小米',
+            age:17
+        }
+        let com = <MyClassCom {...item}/>
+        ReactDOM.render(com, document.getElementById('rootDiv'))
+    </script>
+
+
+</body>
+</html>

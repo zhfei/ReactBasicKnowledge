@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无状态组件</title>
+
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.min.js"></script>
+</head>
+<body>
+<!--无状态组件创建类似于一个函数-->
+    <div id="rootDiv">
+
+    </div>
+
+    <script type="text/babel">
+        // 无状态组件的创建方式，类似于一个函数
+        function MyCom() {
+            return (
+                <p>这是一个无状态的组件</p>
+            )
+        }
+
+        // 组件就是自定义标签
+        let com = <div>
+                        <MyCom/>
+                        <MyCom/>
+                  </div>
+
+        ReactDOM.render(com, document.getElementById('rootDiv'))
+    </script>
+
+</body>
+</html>

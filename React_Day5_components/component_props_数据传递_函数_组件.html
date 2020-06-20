@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件间数据传递</title>
+
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.min.js"></script>
+
+</head>
+<body>
+
+    <div id="rootDiv">
+
+    </div>
+
+    <!--函数组件传递参数-->
+    <script type="text/babel">
+
+        function MyFuncCom(props) {
+            return (
+                <p>我是函数无状态组件,参数是：name:{props.name}----age:{props.age}</p>
+            )
+        }
+        //属性传递
+        let com = <MyFuncCom name="xiao ming" age="33"/>
+        ReactDOM.render(com, document.getElementById('rootDiv'))
+    </script>
+
+    <script type="text/babel">
+
+        function MyFuncCom(props) {
+            return (
+                    <p>我是函数无状态组件,参数是：name:{props.name}----age:{props.age}</p>
+            )
+        }
+        //对象传递
+        let item = {
+            name:'小米',
+            age:17
+        }
+        let com = <MyFuncCom {...item}/>
+        ReactDOM.render(com, document.getElementById('rootDiv'))
+    </script>
+
+
+</body>
+</html>

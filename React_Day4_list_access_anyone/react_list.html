@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React列表</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.min.js"></script>
+</head>
+<body bgcolor="#f5f5dc">
+    <div id="rootReact">
+
+    </div>
+
+    <script type="text/babel">
+        // react列表渲染 map()
+        let arr = ['吃饭','睡觉','打豆豆'];
+        let myDom = arr.map((item, index)=>{
+            return ( <p key={index}>{item}</p> )
+        })
+        
+        function myDom1() {
+            var arr_res = []
+            for (let index in arr) {
+                let ele = <p key={index}>{arr[index]}</p>
+                arr_res.push(ele)
+            }
+            console.log(arr_res)
+            return arr_res
+        }
+
+        ReactDOM.render(myDom1(), document.getElementById('rootReact'))
+
+    </script>
+</body>
+</html>
