@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件与组件化</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+        <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+        <script src="node_modules/babel-standalone/babel.min.js"></script>
+</head>
+<body bgcolor="#f5f5dc">
+    <div id="rootReact">
+
+    </div>
+
+    <script type="text/babel">
+
+        class MyCom extends React.Component{
+            constructor(props){
+                super(props)
+
+                this.funBindedD = this.funBindedD.bind(this)
+
+            }
+
+            funNameA(prom, e){
+                console.log('第一种事件绑定：'+this)
+                console.log('第一种事件参数：'+prom)
+                //e:点击事件
+                console.log(e)
+            }
+
+            funVarB = (prom,e)=>{
+                console.log('第二种事件绑定：'+this)
+                console.log('第二种事件参数：'+prom)
+                //e:点击事件,通过方法变量传递的e事件比通过bind自动传入的更加准确
+                console.log(e)
+            }
+
+            funBindedD(){
+                console.log('第四种事件绑定：'+this)
+            }
+
+            render(){
+                return(
+                    <div>
+                        <p>第一种事件绑定事件绑定:函数名称绑定</p>
+                        <button onClick={this.funNameA.bind(this)}>按钮点击事件</button>
+
+                        <p>第二种事件绑定事件绑定:箭头函数变量</p>
+                        <button onClick={this.funVarB}>按钮点击事件</button>
+
+                        <p>第三种事件绑定事件绑定:箭头函数</p>
+                        <button onClick={()=>{console.log('第三种事件绑定：'+this)}}>按钮点击事件</button>
+
+                        <p>第四种事件绑定事件绑定:在构造函数中提前绑定</p>
+                        <button onClick={this.funBindedD}>按钮点击事件</button>
+
+
+
+
+                        <p>----------参数传递----------</p>
+                        <p>第一种事件绑定事件参数传递:函数名称参数传递</p>
+                        <button onClick={this.funNameA.bind(this,'我是第一种事件的参数-6')}>按钮点击事件</button>
+
+                        <p>第二种事件绑定事件参数传递:箭头函数变量参数传递</p>
+                        <button onClick={this.funVarB.bind(this,'我是第一种事件的参数-7')}>按钮点击事件</button>
+
+                        <p>第三种事件绑定事件绑定:箭头函数</p>
+                        <button onClick={(e)=>{this.funVarB("参数-8",e)}}>按钮点击事件</button>
+
+                    </div>
+                )
+            }
+        }
+
+
+
+
+        let myDom = <MyCom/>;
+        ReactDOM.render(myDom,document.getElementById('rootReact'));
+    </script>
+</body>
+</html>

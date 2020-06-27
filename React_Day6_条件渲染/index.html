@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件与组件化</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+        <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+        <script src="node_modules/babel-standalone/babel.min.js"></script>
+</head>
+<body bgcolor="#f5f5dc">
+    <div id="rootReact">
+
+    </div>
+
+    <script type="text/babel">
+
+        class MyCom extends React.Component{
+            constructor(props){
+                super(props)
+
+                this.state={
+                    isShowName:false
+                }
+            }
+
+
+            render(){
+                let text=''
+                if (this.state.isShowName) {
+                    text = '展示名字'
+                } else {
+                    text = '隐藏名字'
+                }
+
+
+                return (
+                    <div>
+                        <button onClick={()=>{this.setState({isShowName:!this.state.isShowName})}}>点击更新名称</button>
+                        <p>这是一个条件渲染：name:{text}</p>
+                        <p>使用三元运算符进行更新：{this.state.isShowName?'展示 哈哈':'隐藏 呵呵'}</p>
+                    </div>
+                )
+            }
+
+
+        }
+
+
+        let myDom = <MyCom/>;
+        ReactDOM.render(myDom,document.getElementById('rootReact'));
+    </script>
+</body>
+</html>
