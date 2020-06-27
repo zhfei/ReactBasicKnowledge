@@ -1,0 +1,18 @@
+create-react-app 是Facebook官方推荐的一款react的脚手架
+
+电脑上面必须有node,升级到最新版本
+
+
+安装步骤：
+1.cnpm install -g create-react-app  全局安装脚手架
+2.create-react-app --version        查看安装的版本
+
+3.                                   启动项目
+cd rn_app
+npm start
+
+
+
+
+
+
