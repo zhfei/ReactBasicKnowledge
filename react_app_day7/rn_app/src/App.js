@@ -1,7 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Home_tmp from './components/Home_tmp'
 import Home from './components/Home'
+
 
 function App() {
   return (
@@ -22,8 +24,9 @@ function App() {
       {/*</header>*/}
 
 
-      <Home/>
+      <Home_tmp/>
 
+      <Home/>
 
     </div>
   );
