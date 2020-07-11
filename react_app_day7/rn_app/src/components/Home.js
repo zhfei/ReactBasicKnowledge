@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 
 import SubComp from './SubComp'
+import Phone from './phone'
 
 export default class Home extends Component {
 
@@ -24,6 +25,7 @@ export default class Home extends Component {
                 Home -- hello
                 <p>Home2 子组件传值给父组件 -- {this.state.text}</p>
                 <SubComp text="我是参数123" fufun={this.dataFun}/>
+                <Phone/>
             </div>
         )
     }

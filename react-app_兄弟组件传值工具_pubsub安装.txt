@@ -1,0 +1,11 @@
+
+先进入到react-app的工程目录下
+然后执行下面的命令安装pubsub-js工具
+
+cnpm install pubsub-js --save
+
+
+
+
+
+
