@@ -1,0 +1,24 @@
+{
+  "array":[
+    {
+      "id":1,
+      "name":"jack",
+      "age":20
+    },
+    {
+      "id":2,
+      "name":"lilei",
+      "age":20
+    },
+    {
+      "id":3,
+      "name":"tom",
+      "age":20
+    },
+    {
+      "id":4,
+      "name":"hanmeimei",
+      "age":20
+    }
+  ]
+}

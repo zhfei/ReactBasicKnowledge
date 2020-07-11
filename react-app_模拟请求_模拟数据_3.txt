@@ -1,0 +1,21 @@
+
+首先进入到react-app目录下面。
+
+
+json-server 模拟数据用的。安装方式：cnpm install json-server -g
+启动json-server服务
+进入到mock 模拟数据 目录下
+json-server 模拟返回json数据的文件名 --port 4000
+
+
+
+axios       数据请求工具。安装方式：cnpm install axios --save
+
+
+
+
+
+
+
+
+

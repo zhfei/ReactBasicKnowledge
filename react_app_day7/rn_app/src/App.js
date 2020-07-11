@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Home_tmp from './components/Home_tmp'
 import Home from './components/Home'
-
+import HomeNetWork from './components/Home_network'
 
 function App() {
   return (
@@ -27,6 +27,8 @@ function App() {
       <Home_tmp/>
 
       <Home/>
+
+      <HomeNetWork/>
 
     </div>
   );
