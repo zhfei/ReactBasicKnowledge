@@ -4,6 +4,7 @@ import './App.css';
 import Home_tmp from './components/Home_tmp'
 import Home from './components/Home'
 import HomeNetWork from './components/Home_network'
+import HomeCrossDomain from './components/Home_crossDomain'
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
       <Home/>
 
       <HomeNetWork/>
+
+      <HomeCrossDomain/>
 
     </div>
   );

@@ -1,0 +1,36 @@
+跨域问题：
+
+正向代理 - 开发环境：一个位于客户端和服务端之间的服务器。客户端通过中间代理服务器的中转，向目标服务器发送请求，获取目标服务器上的数据。
+
+反向代理 - 线上环境：通过代理服务器 来接收网络上的请求连接，然后将这个请求转发给内网上的服务器，再将内网服务器上返回的数据返回给客户端。 这个代理服务器对外的表现就是一个反向代理。
+
+
+模拟请求真是的网络，中国天气网
+http://www.weather.com.cn/data/cityinfo/101210101.html
+
+
+修改文件：/Users/zhoufei/Documents/React/ReactBasicKnowledge/react_app_day7/rn_app/node_modules/react-scripts/config/webpackDevServer.config.js
+
+修改内容：
+
+    // `proxy` is run between `before` and `after` `webpack-dev-server` hooks
+    proxy:{
+      "/api":{
+        target:"http://www.weather.com.cn/data/cityinfo/", 
+        changeOrigin:true,
+        "pathRewrite":{
+          "^/api":"/"
+        }
+          
+      }
+    },
+
+
+
+运行条件：
+进入工程目录下，重启react-app
+npm start
+
+
+
+
