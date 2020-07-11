@@ -1,0 +1,41 @@
+
+路由：
+根据url的不同切换对应的组件，实现spa（单页面应用）在页面切换时不会刷新，更加接近原生体验
+
+下载：
+先进入到react-app的工程目录下，然后执行下面的命令安装路由工具 react-router-dom
+cnpm install react-router-dom --save
+
+react-router 只提供了一些核心的API
+react-router-dom 增加了更多的功能
+
+
+路由模式：
+Hash     hashRouter (hash模式 带#号 刷新的时候页面不会丢失)
+Browser  browserRouter (历史记录模式 不带#号 是通过历史记录api进行页面切换的，刷新会丢失。本地模式不会)
+
+
+2.index.js引用路由模块
+
+
+3.路由默认 包裹根组件
+在index.js中进行根组件包裹
+ReactDOM.render(
+    <BrowserRouter> <App/> </BrowserRouter>,
+    document.getElementById('root')
+)
+
+
+4.引用 import {Route} from 'react-router-dom'
+
+
+
+5.配置 Route
+
+
+路由导航 Link to="去哪里"
+
+
+
+
+
