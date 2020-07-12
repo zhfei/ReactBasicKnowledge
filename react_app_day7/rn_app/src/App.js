@@ -5,7 +5,7 @@ import Home_tmp from './components/Home_tmp'
 import Home from './components/Home'
 import HomeNetWork from './components/Home_network'
 import HomeCrossDomain from './components/Home_crossDomain'
-
+import HomeHook from './components/Home_hook'
 
 import {Route, Link, NavLink, Switch, Redirect, withRouter} from 'react-router-dom'
 import Phone from './components/phone'
@@ -49,8 +49,12 @@ function App(props) {
       {/*<HomeCrossDomain/>*/}
 
 
+        {/*无状态函数组件，通过hook实现状态管理*/}
+        <HomeHook/>
 
-      {/*路由*/}
+
+
+        {/*路由*/}
         你好-路由
         {/*<div>*/}
             {/*<Link to="/home">点我去home组件页</Link>*/}
@@ -103,9 +107,13 @@ function App(props) {
             <Redirect path="/" to="/user/UserA" exact />
         </Switch>
 
+
+
+
     </div>
   );
 }
 
 //withRouter 高阶组件（HOC）入参是组件，返回值也是组件: 让不是有路由切换组件才具有的，路由切换组件三个属性（history, match, location）
 export default withRouter(App);
+
