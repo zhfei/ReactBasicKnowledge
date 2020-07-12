@@ -23,6 +23,13 @@ export default class Phone extends Component {
 
     }
 
+
+    componentDidMount() {
+        console.log("接收到query方式发送的参数：" + this.props.location)
+        console.log(this.props)
+    }
+
+
     updateState = (text)=>{
         this.setState({
             data:text
