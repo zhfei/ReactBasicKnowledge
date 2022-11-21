@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>虚拟DOM</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.min.js"></script>
+</head>
+<body bgcolor="#f5f5dc">
+    <div id="rootReact"></div>
+
+    <script>
+        const h1 = React.createElement(
+                "h1",
+                {title:"标题属性", id:"id属性"},
+                "这是标题",
+                React.createElement('span',null,"更多子元素")
+        )
+        ReactDOM.render(h1,document.getElementById("rootReact"))
+    </script>
+
+    <script type="text/babel">
+        const items = ['jQuery', 'React', 'Vue']
+
+        //1.创建虚拟DOMO
+        const VDom = (
+                <div>
+                    <h2>流行的框架</h2>
+                    <ul>
+                        {
+                            items.map((item, index) => {
+                                return <li key={index}>{item}+1</li>
+                            })
+                        }
+                    </ul>
+                </div>
+        )
+        //2.添加虚拟DOM到节点
+        ReactDOM.render(VDom, document.getElementById('rootReact'))
+    </script>
+</body>
+</html>

@@ -14,10 +14,64 @@
 
     <script type="text/babel">
 
+        const users = [
+            { username: 'Jerry1', age: 21, gender: 'male' },
+            { username: 'Jerry2', age: 22, gender: 'male1' },
+            { username: 'Jerry3', age: 23, gender: 'male2' },
+            { username: 'Jerry4', age: 24, gender: 'male3' },
+            { username: 'Jerry5', age: 25, gender: 'male4' },
+            { username: 'Jerry6', age: 26, gender: 'male5' },
+        ]
+
         class MyCom extends React.Component{
+            constructor(props) {
+              super(props);
+              this.state = {isLiked:false};
+            }
+
+            handleClick() {
+                this.setState({
+                    isLiked: !this.isLiked
+                })
+            }
+
+            handdleFuncClick() {
+                this.setState((prevState)=>{
+                    return {count: 0}
+                })
+
+                this.setState((prevState)=>{
+                    return {count: prevState.count+1}
+                })
+            }
+
+
             render() {
+                const userEles = []
+                for (let user of users) {
+                    userEles.push(
+                            <div>
+                                <div>姓名：{user.username}</div>
+                                <div>年龄：{user.age}</div>
+                                <div>性别：{user.gender}</div>
+                                <hr/>
+                            </div>
+                    )
+                }
+
                 return (
-                    <p>类组件</p>
+                    <div>
+//                        {userEles}
+                        {users.map((user,i) => {
+                            return(<div>
+                                <div>姓名：{user.username}</div>
+                                <div>年龄：{user.age}</div>
+                                <div>性别：{user.gender}</div>
+                                <hr/>
+                            </div>)
+                        })}
+                    </div>
+
                 )
             }
         }

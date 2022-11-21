@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复习类知识</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.min.js"></script>
+</head>
+<body bgcolor="#f5f5dc">
+    <script>
+        // JS类中的各种函数，构造函数，逻辑函数定义方式都是一样的，xxxname () {}。 前面没有啥function
+        class Person {
+            // 类的构造函数，对应OC中的 init
+            constructor(name, age) {
+                // 实例对象的属性，它们直接接收并保存在实例对象上
+                this.name = name
+                this.age = age
+            }
+            // 实例方法， 方法并不在实例对象里，它们是保存在类的原型上，对应OC是方法保存在类对象上。
+            speak () {
+                // 这里的this是当前方法的调用中，它们不一定是实例对象， 比如下面的p.speak.call({name:'ss', age: 20}),这个this就是call方法中传递的那个
+                console.log(`我的名字${this.name}, 我的年龄${this.age}` )
+            }
+        }
+
+        class Student extends Person {
+            constructor(name, age, grade) {
+                // 子类的构造函数中，super方法要先调用
+                super(name, age);
+                this.grade = grade
+            }
+            // 在类中调用父类的方法，JS 的方法查找方式和OC的一样，现在子类原型对象上找，如果找不到就去父类对象原型上找。
+            // speak() {
+            //     console.log(`我的名字${this.name}, 我的年龄${this.age}, 我上的年级${this.grade}` )
+            // }
+        }
+
+        const p = new Person('xiao ming', 20)
+        console.log(p)
+        p.speak()
+
+        const st = new Student('li lei', 30, '高一')
+        console.log(st)
+        st.speak()
+
+    </script>
+</body>
+</html>

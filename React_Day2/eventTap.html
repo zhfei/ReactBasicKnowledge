@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原生点击事件</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.min.js"></script>
+</head>
+<body bgcolor="#f5f5dc">
+    <button id="btn1">按钮1</button>
+    <button id="btn2">按钮2</button>
+    <button onclick="alert3()">按钮3</button>
+
+    <script>
+        var btn1 = document.getElementById('btn1')
+        btn1.addEventListener('click', ()=>{
+            alert('弹窗1')
+        })
+
+        const btn2 = document.getElementById('btn2')
+        btn2.onclick = function () {
+            alert('弹窗2')
+        }
+
+        // debugger
+
+        function alert3 () {
+            alert('弹窗3')
+        }
+    </script>
+
+    <div id="rootReact"></div>
+
+    <script type="text/babel">
+        //1. 创建类组件
+        class MyClassComponent extends React.Component {
+
+            alert4 () {
+                alert('弹窗h2')
+            }
+
+            render() {
+                //render方法放在哪里？ -> MyClassComponent的原型对象上，供实例使用。
+                //this是谁， -> MyClassComponent组件的实例对象。
+                console.log(this)
+                return <h2 onClick={this.alert4}>点击变化一下</h2>
+            }
+        }
+
+        //2. 将组件渲染到页面上
+        ReactDOM.render(<MyClassComponent/>, document.getElementById('rootReact'))
+        // ReactDOM.render函数执行的过程
+        // 1.React 解析组件标签MyClassComponent， 找到了组件MyClassComponent
+        // 2.发现这个组件是类自定义组件，就new出这个类的实例对象，然后调用实例对象的render方法
+        // 3.随后将返回的虚拟DOM转成真是DOM，呈现到屏幕上
+    </script>
+
+</body>
+</html>

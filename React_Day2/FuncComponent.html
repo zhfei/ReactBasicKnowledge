@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义组件</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.min.js"></script>
+</head>
+<body bgcolor="#f5f5dc">
+    <div id="rootReact"></div>
+
+    <script type="text/babel">
+        //1. 创建函数组件
+        function MyComponent() {
+            console.log(this)
+            return <h2>这是一个自定义的函数组件</h2>
+        }
+
+        //2. 将组件渲染到页面上
+        ReactDOM.render(<MyComponent/>, document.getElementById('rootReact'))
+        // ReactDOM.render函数执行的过程
+        // 1.React 解析组件标签MyComponent， 找到了组件MyComponent
+        // 2.发现这个组件是使用函数自定义的，执行这个函数，
+        // 3.随后将返回的虚拟DOM转成真是DOM，呈现到屏幕上
+    </script>
+</body>
+</html>

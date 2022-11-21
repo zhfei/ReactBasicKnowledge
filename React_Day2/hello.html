@@ -12,10 +12,38 @@
     <div id="rootReact">
 
     </div>
+    <div id="demo"></div>
 
     <script type="text/babel">
-        let myDom = <h1>hello world</h1>;
-        ReactDOM.render(myDom,document.getElementById('rootReact'));
+        let myDom = <h1>hello tan</h1>;
+        let ele =  <h2>hello {myDom}</h2>
+
+
+        function formatName(user) {
+            return user.firstName + ':' + user.lastName
+        }
+
+        const user = {
+            firstName:'Jack',
+            lastName:'Fei'
+        }
+
+        const tap = (e)=>{
+            console.log(e)
+        }
+
+        const ele2 = <h3 onClick={tap}>hello, {formatName(user)}</h3>
+
+        const ele3 = React.createElement('h2', {id:'title2'}, React.createElement('h3', {id:'title3'}, 'hello, ele3'))
+        const ele4 = <h2><h3>hello, ele4</h3></h2>
+        const ele5 = document.getElementById('demo')
+
+        console.log('虚拟DOM', ele4)
+        console.log('真实DOM', ele5)
+        debugger
+
+
+        ReactDOM.render(ele2,document.getElementById('rootReact'));
     </script>
 </body>
 </html>
