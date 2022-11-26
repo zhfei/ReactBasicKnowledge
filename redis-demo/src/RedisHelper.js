@@ -1,7 +1,10 @@
 
 const redis = require("redis");
 const util = require('util')
-// const bluebird = require('bluebird')
+const bluebird = require('bluebird')
+const {config} = require('./Config')
+
+
 // //存在用户名：密码时
 // // format redis[s]://[[username][:password]@][host][:port][/db-number]:
 // const client = redis.createClient({
@@ -15,12 +18,12 @@ const util = require('util')
 
 //链接配置
 const options = {
-  url:'redis://:123456@1.15.55.28:15001'
+  url:'redis://:123456@'+config.URL+":"+config.Port
 };
 
-const client = redis.createClient(options)
+// const client = redis.createClient(options)
 // 使用bluebird将redis中的所有异步方法包括一层Asnyc
-// const client = bluebird.promisifyAll(redis.createClient(options))
+const client = bluebird.promisifyAll(redis.createClient(options))
 
 //监听错误事件
 client.on("error", (err) => {
@@ -59,13 +62,13 @@ const getAsync = (key) => {
   });
 }
 
-const getValue = (key) => {
-  return getAsync(key)
-}
 // const getValue = (key) => {
-//   //bluebird内部提供了getAsync方法，它是把get方法封了一层Promise
-//   return client.getAsync(key)
+//   return getAsync(key)
 // }
+const getValue = (key) => {
+  //bluebird内部提供了getAsync方法，它是把get方法封了一层Promise
+  return client.getAsync(key)
+}
 
 const setValue = (key, value) => {
   if (typeof value === 'undefined' || value == null || value === ''){
