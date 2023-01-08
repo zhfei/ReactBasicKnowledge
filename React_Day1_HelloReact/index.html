@@ -15,9 +15,14 @@
 
   <script>
     // React.createElement创建的ele是一个js对象
-    const ele = React.createElement('h1', null, 'Helle React Ele');
+    // 第一个参数：要创建的React元素
+    // 第二个参数：该React元素的属性
+    // 第三个参数及其以后的参数：该React元素的子节点
+    const ele = React.createElement('h1', {id: '标题'}, 'Helle React Ele');
 
     // ReactDOM.render将这个react生成的js对象，映射成真实的DOM元素并展示到屏幕上
+    // 第一个参数：要渲染的React元素
+    // 第二个参数：DOM元素，用于指定渲染到页面中的位置
     ReactDOM.render(ele, document.getElementById('root'))
   </script>
   
