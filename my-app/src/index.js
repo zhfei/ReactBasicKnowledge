@@ -86,7 +86,7 @@ const container = (
 
 // ReactDom.render(<State />, document.getElementById("root"))
 
-// ReactDom.render(<Form />, document.getElementById("root"))
+ReactDom.render(<Form />, document.getElementById("root"))
 
 // ReactDom.render(<ComponentApp />, document.getElementById("root"))
 
@@ -105,7 +105,7 @@ const container = (
 
 // ReactDom.render(<Principle />, document.getElementById("root"))
 
-ReactDom.render(<RouterApp />, document.getElementById("root"))
+// ReactDom.render(<RouterApp />, document.getElementById("root"))
 
 
 
