@@ -8,8 +8,6 @@ function App() {
   return (
     <Router>
       <div className="App">
-          Hello React
-          <Button color='primary'>登录</Button>
           <Link to='/home'>首页</Link>
           <Link to='/citylist'>城市列表</Link>
 
