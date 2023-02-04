@@ -56,7 +56,7 @@ export default class Home extends Component {
           </div>
           <div className='body'>
             <Switch>
-              <Route exact path='/home'>
+              <Route path='/home'>
                 <Home1></Home1>
               </Route>
               <Route exact path='/todo'>
@@ -86,7 +86,7 @@ function Home1(props) {
   return (
     <div>
       首页
-      {props.chrildren}
+      <Route path='/home/news' component={News}></Route>
   </div>
   )
 }
