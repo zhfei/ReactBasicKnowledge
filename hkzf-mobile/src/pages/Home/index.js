@@ -3,6 +3,11 @@ import {Route, Switch, useHistory, useLocation, MemoryRouter as Router} from 're
 import { NavBar, TabBar } from 'antd-mobile'
 import { AppOutline, MessageOutline, UnorderedListOutline, UserOutline } from 'antd-mobile-icons'
 import News from '../News'
+import HouseList from '../HouseList'
+import Profile from '../Profile'
+import Index from '../Index'
+
+
 import './index.css'
 
 const Bottom = () => {
@@ -16,22 +21,22 @@ const Bottom = () => {
 
   const tabs = [
     {
-      key: '/home',
+      key: '/home/index',
       title: '首页',
       icon: <AppOutline />,
     },
     {
-      key: '/todo',
+      key: '/home/houselist',
       title: '找房',
       icon: <UnorderedListOutline />,
     },
     {
-      key: '/message',
+      key: '/home/news',
       title: '咨询',
       icon: <MessageOutline />,
     },
     {
-      key: '/me',
+      key: '/home/profile',
       title: '我的',
       icon: <UserOutline />,
     },
@@ -56,17 +61,17 @@ export default class Home extends Component {
           </div>
           <div className='body'>
             <Switch>
-              <Route path='/home'>
-                <Home1></Home1>
+              <Route path='/home/index'>
+                <Index/>
               </Route>
-              <Route exact path='/todo'>
-                <Todo />
+              <Route path='/home/houselist'>
+                <HouseList />
               </Route>
-              <Route exact path='/message'>
-                <Message />
+              <Route path='/home/news'>
+                <News />
               </Route>
-              <Route exact path='/me'>
-                <PersonalCenter />
+              <Route path='/home/profile'>
+                <Profile />
               </Route>
             </Switch>
           </div>
@@ -74,33 +79,9 @@ export default class Home extends Component {
             <Bottom />
           </div>
         </div>
-        {/* 设置嵌套路由出口 */}
-        <Route path='/home/news' component={News}/>  
-
       </div>
     )
   }
-}
-
-function Home1(props) {
-  return (
-    <div>
-      首页
-      <Route path='/home/news' component={News}></Route>
-  </div>
-  )
-}
-
-function Todo() {
-  return <div>待办</div>
-}
-
-function Message() {
-  return <div>消息</div>
-}
-
-function PersonalCenter() {
-  return <div>我的</div>
 }
 
 
