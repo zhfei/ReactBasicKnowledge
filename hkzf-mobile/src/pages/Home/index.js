@@ -3,6 +3,7 @@ import {Route, Switch, useHistory, useLocation, MemoryRouter as Router} from 're
 import { NavBar, TabBar } from 'antd-mobile'
 import { AppOutline, MessageOutline, UnorderedListOutline, UserOutline } from 'antd-mobile-icons'
 import News from '../News'
+import './index.css'
 
 const Bottom = () => {
   const history = useHistory()
@@ -21,12 +22,12 @@ const Bottom = () => {
     },
     {
       key: '/todo',
-      title: '待办',
+      title: '找房',
       icon: <UnorderedListOutline />,
     },
     {
       key: '/message',
-      title: '消息',
+      title: '咨询',
       icon: <MessageOutline />,
     },
     {
@@ -51,7 +52,7 @@ export default class Home extends Component {
       <div>
         <div className='app'>
           <div className='top'>
-            <NavBar>配合路由使用</NavBar>
+            <NavBar>好客租房</NavBar>
           </div>
           <div className='body'>
             <Switch>
