@@ -52,7 +52,7 @@ export default class Home extends Component {
       <div>
         <div className='app'>
           <div className='top'>
-            <NavBar>好客租房</NavBar>
+            <NavBar backArrow={false}>好客租房</NavBar>
           </div>
           <div className='body'>
             <Switch>
