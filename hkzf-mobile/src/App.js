@@ -6,14 +6,15 @@ import CityList from '@/pages/CityList'
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-          <Link to='/home'>首页</Link>
+    <Router initialEntries={['/home']}>
+      {/* <div className="App">
+          <Link to='/home/news'>新闻列表</Link>
           <Link to='/citylist'>城市列表</Link>
 
-          <Route path='/home' component={Home}/>
-          <Route path='/citylist' component={CityList}/>
-      </div>
+          <Route path='/citylist' component={CityList}/> 
+      </div> */}
+      <Home>
+      </Home>
     </Router>
   );
 }
