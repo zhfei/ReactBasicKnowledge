@@ -21,7 +21,7 @@ const Bottom = () => {
 
   const tabs = [
     {
-      key: '/home/index',
+      key: '/home',
       title: '首页',
       icon: <AppOutline />,
     },
@@ -61,7 +61,7 @@ export default class Home extends Component {
           </div>
           <div className='body'>
             <Switch>
-              <Route path='/home/index'>
+              <Route exact path='/home'>
                 <Index/>
               </Route>
               <Route path='/home/houselist'>
