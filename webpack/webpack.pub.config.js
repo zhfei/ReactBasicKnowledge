@@ -1,8 +1,9 @@
 const path = require('path')
 const htmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     //项目的入口与出口设置
     entry: path.join(__dirname, './src/index.js'),
     output: {
@@ -20,17 +21,22 @@ module.exports = {
             //页面模板
             template: path.join(__dirname, './src/index.html'),
             filename: 'index.html'
-        })
+        }),
+        new CleanWebpackPlugin({cleanAfterEveryBuildPatterns:['dist']})
     ],
     /*
         webpack默认只能打包处理以.js结尾的模块。其他非.js后缀名结尾的模块，webpack默认是不处理的。
         需要调用loader加载器才可以正常打包，loader加载器的作用：协作webpack打包处理约定的文件模块。比如：css-loader: 可以打包处理.css相关的文件。
+        产物图片优化：
+        把项目中的所有图片在产物中放到一个images文件夹下面
+        { test: /\.(png|gif|bmp|jpg)$/, use: 'url-loader?limit=5000&name=images/[hash:8]-[name].[ext]' },
+        
     */
     module: {
         rules: [
             { test: /\.css$/, use:['style-loader', 'css-loader'] },
             { test: /\.scss$/, use:['style-loader', 'css-loader', 'sass-loader'] },
-            { test: /\.(png|gif|bmp|jpg)$/, use: 'url-loader?limit=5000&name=[hash:8]-[name].[ext]' },
+            { test: /\.(png|gif|bmp|jpg)$/, use: 'url-loader?limit=5000&name=images/[hash:8]-[name].[ext]' },
             // { test: /\.js$/, use:'babel-loader', exclude: /node_modules/ },
         ]
     }
