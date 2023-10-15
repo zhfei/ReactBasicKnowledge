@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "--cacheBase": "指定托管目录， 如果没指定默认在项目内存的根目录下",
-    "dev": "webpack-dev-server --open --port 3000 --hot"
+    "dev": "webpack-dev-server --open --port 3000 --hot",
+    "pub": "webpack --config webpack.pub.config.js"
   },
   "keywords": [],
   "author": "",
