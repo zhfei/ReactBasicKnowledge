@@ -1,8 +1,12 @@
 const path = require('path')
 const htmlWebpackPlugin = require('html-webpack-plugin')
+//导入每次删除文件夹的插件
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack')
+// 抽取Css插件
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+// 压缩css插件
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = {
     mode: 'production',
@@ -38,6 +42,8 @@ module.exports = {
             每次构建产物都要重新创建dist目录保存产物
         */
         new CleanWebpackPlugin({cleanAfterEveryBuildPatterns:['dist']}),
+
+        new OptimizeCssAssetsPlugin()
     ],
 
     /*
@@ -96,16 +102,16 @@ module.exports = {
         rules: [
             { test: /\.css$/, use:['style-loader', 'css-loader'] },
             { test: /\.scss$/, use:['style-loader', 'css-loader', 'sass-loader'] },
-            { test: /\.css$/, use: ExtractTextPlugin.extract({
-                fallback: 'style-loader',
-                use: 'css-loader',
-                publicPath: '../' //指定抽离的时候，自动为我们使用的路径加上 ../前缀
-            }) },
-            { test: /\.scss$/, use: ExtractTextPlugin.extract({
-                fallback: 'style-loader',
-                use: ['css-loader', 'sass-loader'],
-                publicPath: '../' //指定抽离的时候，自动为我们使用的路径加上 ../前缀
-            }) },
+            // { test: /\.css$/, use: ExtractTextPlugin.extract({
+            //     fallback: 'style-loader',
+            //     use: 'css-loader',
+            //     publicPath: '../' //指定抽离的时候，自动为我们使用的路径加上 ../前缀
+            // }) },
+            // { test: /\.scss$/, use: ExtractTextPlugin.extract({
+            //     fallback: 'style-loader',
+            //     use: ['css-loader', 'sass-loader'],
+            //     publicPath: '../' //指定抽离的时候，自动为我们使用的路径加上 ../前缀
+            // }) },
             { test: /\.(png|gif|bmp|jpg)$/, use: 'url-loader?limit=5000&name=images/[hash:8]-[name].[ext]' },
             // { test: /\.js$/, use:'babel-loader', exclude: /node_modules/ },
         ]
