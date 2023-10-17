@@ -14,7 +14,7 @@ module.exports = {
     // }, 
     output: {
         path: path.join(__dirname, './dist'),
-        filename: 'bundle.js'
+        filename: 'js/bundle.js'
     },
     plugins: [ //插件
         //在内存中生成一个页面，默认在项目的根目录下的内存中
@@ -44,6 +44,19 @@ module.exports = {
         })
         webpack5设置无效，先注释
     */
+
+    /*
+        js代码压缩优化
+        new webpack.optimize.UglifyJsPlugin({
+            compress: { //配置压缩项
+                warnings: false //移除警告
+            }
+        }),
+        new webpack.optimize.DedupePlugin({
+            'process.env.NODE_ENV': '"production"'
+        })
+    */
+
     // optimization: {
     //     splitChunks: {
     //         cacheGroups: {
