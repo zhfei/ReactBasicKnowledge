@@ -2,6 +2,7 @@ const path = require('path')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
     mode: 'production',
@@ -26,16 +27,21 @@ module.exports = {
         new htmlWebpackPlugin({
             //页面模板
             template: path.join(__dirname, './src/index.html'),
-            filename: 'index.html'
+            filename: 'index.html',
+            minify: {
+                collapseWhitespace: true, //合并多余的空格
+                removeComments: true, // 移除注释
+                removeAttributeQuotes: true //移除属性上的双引号
+            }
         }),
         /*
             每次构建产物都要重新创建dist目录保存产物
         */
-        new CleanWebpackPlugin({cleanAfterEveryBuildPatterns:['dist']})
+        new CleanWebpackPlugin({cleanAfterEveryBuildPatterns:['dist']}),
     ],
 
     /*
-        抽离第三方包名称
+        编译优化：抽离第三方包名称
         webpack3的在plugins数组中添加new webpack.optimize.CommonsChunkPlugin配置方式已经废弃，要在下面的方法进行实现
         webpack3实现方法
         new webpack.optimize.CommonsChunkPlugin({
@@ -46,7 +52,7 @@ module.exports = {
     */
 
     /*
-        js代码压缩优化
+        编译优化：js代码压缩优化
         new webpack.optimize.UglifyJsPlugin({
             compress: { //配置压缩项
                 warnings: false //移除警告
@@ -54,6 +60,14 @@ module.exports = {
         }),
         new webpack.optimize.DedupePlugin({
             'process.env.NODE_ENV': '"production"'
+        })
+    */
+
+    /*
+        编译优化：抽离css
+        //配置提取出来的css名称
+        new ExtractTextPlugin({
+            filename: 'style/[name].min.css' 
         })
     */
 
@@ -82,6 +96,16 @@ module.exports = {
         rules: [
             { test: /\.css$/, use:['style-loader', 'css-loader'] },
             { test: /\.scss$/, use:['style-loader', 'css-loader', 'sass-loader'] },
+            { test: /\.css$/, use: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: 'css-loader',
+                publicPath: '../' //指定抽离的时候，自动为我们使用的路径加上 ../前缀
+            }) },
+            { test: /\.scss$/, use: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: ['css-loader', 'sass-loader'],
+                publicPath: '../' //指定抽离的时候，自动为我们使用的路径加上 ../前缀
+            }) },
             { test: /\.(png|gif|bmp|jpg)$/, use: 'url-loader?limit=5000&name=images/[hash:8]-[name].[ext]' },
             // { test: /\.js$/, use:'babel-loader', exclude: /node_modules/ },
         ]
