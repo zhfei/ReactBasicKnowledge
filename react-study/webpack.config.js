@@ -31,7 +31,7 @@ module.exports = {
             { test: /\.css$/, use:['style-loader', 'css-loader'] },
             { test: /\.scss$/, use:['style-loader', 'css-loader', 'sass-loader'] },
             { test: /\.(png|gif|bmp|jpg)$/, use: 'url-loader?limit=500000' },
-            { test: /\.js$/, use:'babel-loader', exclude: /node_modules/ },
+            { test: /\.jsx?$/, use:'babel-loader', exclude: /node_modules/ },
         ]
     }
 }

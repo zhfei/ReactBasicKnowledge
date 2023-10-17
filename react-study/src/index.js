@@ -5,6 +5,7 @@ ReactDOM: 操作真实Dom， 将虚拟Dom渲染到真实的Dom之上。
 */
 import React from "react";
 import ReactDOM from "react-dom";
+import World from "./components/World.jsx";
 
 /*
 在React中，不能像Vue中那样直接写html元素，要通过react的API创建元素React.createElelement()
@@ -46,10 +47,30 @@ var h2D = <div>
 
 
 var divD = React.createElement("div", {title:"这是一个div", id:"rootSub"},"这是一个React创建的div", h2D)
+var person = {
+    name: 'jack',
+    age: 30,
+    address: '北京'
+}
+
+/*
+    React中，构造函数就是一个最基本的组件, 使用时把构造函数的名称当做html标签名使用。
+    React自定义的组件必须是大写字母开头，小写字母编译器默认是浏览器提供的组件。会从浏览器中去查找。
+*/
+function Hello() {
+    return <div>
+        这是使用Hello构造函数 创建的基本组件Hello
+    </div>
+}
 
 /*
 将react元素渲染到页面对应的位置上。
 */
-ReactDOM.render(divD, document.getElementById("root"))
+ReactDOM.render(<div>
+    {divD}
+    <Hello></Hello>
+    {/* 如果传递的参数是个对象，可以进行对对象进行属性扩散进行批量传参 */}
+    <World {...person}></World>
+</div>, document.getElementById("root"))
 
 
