@@ -22,14 +22,30 @@ React.createElement有三个参数，并返回一个dom对象，也就是js对�
     需要安装：npm i babel-preset-react -D
     webpack没法编译jsx代码，它会找到babel进行编译这个代码，babel发现它是react内的语法，就会调用babel-preset-react插件进行解析
 */
-// var h2D = (
-//     <div>
-//     这是一个jsx的h2标题
-// </div>
-// )
 
 
-var divD = React.createElement("div", {title:"这是一个div", id:"rootSub"},"这是一个React创建的div")
+/*
+    babel碰到<>按照html的语义， 使用React.createElement进行解析
+    碰到{}会按照js进行解析, {}中只能存放一个带返回值的js语句
+*/
+
+var list = []
+for (let i = 0; i < 10; i++) {
+    var p = <p key={i} >这是for循环生成的p标签</p>
+    list.push(p)
+}
+
+var myTitle = "这是标题的title"
+var h2D = <div>
+    这是一个jsx的h2标题
+    <h1 title={ myTitle }>JSX真好用</h1>
+    { list }
+    {/* 这是jsx中的注释 */}
+</div>
+
+
+
+var divD = React.createElement("div", {title:"这是一个div", id:"rootSub"},"这是一个React创建的div", h2D)
 
 /*
 将react元素渲染到页面对应的位置上。
