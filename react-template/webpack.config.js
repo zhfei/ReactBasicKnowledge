@@ -1,5 +1,6 @@
 const path = require('path')
 const htmlWebpackPlugin = require('html-webpack-plugin')
+const { name } = require('file-loader')
 
 module.exports = {
     mode: 'development',
@@ -28,7 +29,17 @@ module.exports = {
     */
     module: {
         rules: [
-            { test: /\.css$/, use:['style-loader', 'css-loader'] },
+            // { test: /\.css$/, use:['style-loader', 'css-loader'] },
+            //声明css模块化，使用CSS模块化解决多个css的作用域都是全局作用域，导致结果互相覆盖的情况
+            { test: /\.css$/, use:['style-loader', {
+                loader: 'css-loader',
+                options: {
+                    importLoaders: 1,
+                    modules: true,
+                    //自定义css模块化后的class名称
+                    // localIdentName: [name]-[local]-[hash:5]
+                }
+            }] },
             { test: /\.scss$/, use:['style-loader', 'css-loader', 'sass-loader'] },
             { test: /\.(png|gif|bmp|jpg)$/, use: 'url-loader?limit=500000' },
             { test: /\.jsx?$/, use:'babel-loader', exclude: /node_modules/ },

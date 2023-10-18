@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import CommentList from "./components/comment/CommentList.jsx";
 
 
+import "./css/commentList.css"
 
 
 

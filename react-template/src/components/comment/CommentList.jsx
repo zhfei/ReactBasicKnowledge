@@ -21,6 +21,7 @@ export default class CommentList extends React.Component {
 
     render(){
         return <div>
+            <h2 className="title">评论列表案例</h2>
             {
                 this.state.list.map((item,index) => {
                     //使用对象扩展，批量传递参数
