@@ -6,6 +6,7 @@ ReactDOM: 操作真实Dom， 将虚拟Dom渲染到真实的Dom之上。
 import React from "react";
 import ReactDOM from "react-dom";
 import World from "./components/World.jsx";
+import myClass from "./class_study.js"
 
 /*
 在React中，不能像Vue中那样直接写html元素，要通过react的API创建元素React.createElelement()
