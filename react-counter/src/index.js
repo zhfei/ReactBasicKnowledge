@@ -1,15 +1,17 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-import CommentList from "./components/comment/CommentList.jsx";
 
+import Counter from "./components/Counter/Counter.jsx"
 
-import "./css/commentList.css"
 
 
 
 ReactDOM.render(<div>
-    <CommentList></CommentList>
+    <Counter></Counter>
+    <hr></hr>
+    <Counter initCount={33}></Counter>
+    <Counter initCount="sssss"></Counter>
 </div>, document.getElementById("root"))
 
 
