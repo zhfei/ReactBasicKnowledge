@@ -50,18 +50,24 @@ export default class Counter extends React.Component {
         //     console.log(this)
         // }
         //箭头函数没有this, 所以它里面的this指向它的父级外层
-        document.getElementById('btn').onclick = () => {
-            console.log(this)
-            this.setState({
-                countNum: this.state.countNum
-            })
-        }
+        // document.getElementById('btn').onclick = () => {
+        //     console.log(this)
+        //     this.setState({
+        //         countNum: this.state.countNum
+        //     })
+        // }
+    }
+
+    increaseNum = ()=>{
+        this.setState({
+            countNum: this.state.countNum + 1
+        })
     }
 
 
     render(){
         return <div>
-            <input type="button" value='加一' id="btn"></input>
+            <input type="button" value='加一' id="btn" onClick={this.increaseNum}></input>
             <br/>
             <h2>当前计数：{this.state.countNum}</h2>
         </div>
