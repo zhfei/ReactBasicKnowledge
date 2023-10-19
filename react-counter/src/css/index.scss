@@ -1,0 +1,32 @@
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            font-size: 12px;
+            line-height: 30px;
+            padding-left: 10px;
+        }
+    }
+
+    #box {
+        width: 400px;
+        height: 800px;
+        background-image: url('../images/phone1.jpg');
+        background-size: cover;
+    }
+}
+
+
+
+
+
+
+
