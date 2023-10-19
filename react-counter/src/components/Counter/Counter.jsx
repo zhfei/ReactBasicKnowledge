@@ -58,6 +58,34 @@ export default class Counter extends React.Component {
         // }
     }
 
+
+    //更新阶段
+    //父组件内部状态更改进行UI刷新时，导致传递给子组件的props值发生了更新,则会触发这个方法
+    //组件首次渲染时，不会触发这个方法
+    componentWillReceiveProps(nextProps){
+        //componentWillReceiveProps中，通过this.props.num获取的是历史旧值，nextProps拿到的是新值
+        console.log(this.props.initCount + '---componentWillReceiveProps----' + nextProps.initCount)
+    }
+
+    //判断组件是否需要更新, 必须返回一个bool值， true时刷新UI，false是不刷新UI。
+    shouldComponentUpdate(nextProps, nextState, nextContext){
+        //在shouldComponentUpdate中，通过this.state.count拿到的是上一次的历史数据，最新的数据要从nextState中拿
+        console.log(this.state.countNum + '-------' + nextState.countNum)
+        return nextState.countNum % 2 == 0 ? true : false
+    }
+    //组件将要更新，此时虚拟DOM和页面上的组件都是旧的
+    componentWillUpdate() {
+        // console.log(document.getElementById('h2'))
+        //通过React提供的ref机制获取DOM元素
+        console.log(this.refs.h2Ref)
+    }
+    //组件更新完成，虚拟DOM已经渲染到真实的页面之上了，state, DOM, 页面元素保持一致
+    componentDidUpdate(){
+        console.log(this.refs.h2Ref)
+    }
+
+
+
     increaseNum = ()=>{
         this.setState({
             countNum: this.state.countNum + 1
@@ -69,7 +97,7 @@ export default class Counter extends React.Component {
         return <div>
             <input type="button" value='加一' id="btn" onClick={this.increaseNum}></input>
             <br/>
-            <h2>当前计数：{this.state.countNum}</h2>
+            <h2 id="h2" ref='h2Ref'>当前计数：{this.state.countNum}</h2>
         </div>
     }
 }
