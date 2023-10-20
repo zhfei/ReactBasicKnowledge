@@ -6,7 +6,7 @@ import Counter from "./components/Counter/Counter.jsx"
 import SuperCounter from './components/Counter/SuperCounter.jsx'
 import BindThis from './components/BindThis.jsx'
 import CmtList from "./components/Comment/CmtList.jsx";
-
+import Context from "./components/Context.jsx";
 
 
 // ReactDOM.render(<div>
@@ -21,7 +21,8 @@ import CmtList from "./components/Comment/CmtList.jsx";
 
 ReactDOM.render(<div>
     
-    <CmtList></CmtList>
+    {/* <CmtList></CmtList> */}
+    <Context></Context>
 </div>, document.getElementById("root"))
 
 
