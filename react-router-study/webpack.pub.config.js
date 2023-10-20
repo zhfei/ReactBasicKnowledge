@@ -44,39 +44,41 @@ module.exports = {
         new CleanWebpackPlugin({cleanAfterEveryBuildPatterns:['dist']}),
 
         new OptimizeCssAssetsPlugin()
+
+        /*
+            编译优化：抽离第三方包名称
+            webpack3的在plugins数组中添加new webpack.optimize.CommonsChunkPlugin配置方式已经废弃，要在下面的方法进行实现
+            webpack3实现方法
+            new webpack.optimize.CommonsChunkPlugin({
+                name: 'vendors', //指定抽离的入口
+                filename: 'vendors.js' //抽离的所有第三方包的结果包名称。
+            })
+            webpack5设置无效，先注释
+        */
+
+        /*
+            编译优化：js代码压缩优化
+            new webpack.optimize.UglifyJsPlugin({
+                compress: { //配置压缩项
+                    warnings: false //移除警告
+                }
+            }),
+            new webpack.optimize.DedupePlugin({
+                'process.env.NODE_ENV': '"production"'
+            })
+        */
+
+        /*
+            编译优化：抽离css
+            //配置提取出来的css名称
+            new ExtractTextPlugin({
+                filename: 'style/[name].min.css' 
+            })
+        */
+
     ],
 
-    /*
-        编译优化：抽离第三方包名称
-        webpack3的在plugins数组中添加new webpack.optimize.CommonsChunkPlugin配置方式已经废弃，要在下面的方法进行实现
-        webpack3实现方法
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendors', //指定抽离的入口
-            filename: 'vendors.js' //抽离的所有第三方包的结果包名称。
-        })
-        webpack5设置无效，先注释
-    */
-
-    /*
-        编译优化：js代码压缩优化
-        new webpack.optimize.UglifyJsPlugin({
-            compress: { //配置压缩项
-                warnings: false //移除警告
-            }
-        }),
-        new webpack.optimize.DedupePlugin({
-            'process.env.NODE_ENV': '"production"'
-        })
-    */
-
-    /*
-        编译优化：抽离css
-        //配置提取出来的css名称
-        new ExtractTextPlugin({
-            filename: 'style/[name].min.css' 
-        })
-    */
-
+    // webpack V5替代webpack V3的解决方案
     // optimization: {
     //     splitChunks: {
     //         cacheGroups: {
@@ -100,9 +102,19 @@ module.exports = {
     */
     module: {
         rules: [
-            // { test: /\.css$/, use:['style-loader', 'css-loader'] },
+            { test: /\.css$/, use:['style-loader', 'css-loader'] },
             //声明css模块化，使用CSS模块化解决多个css的作用域都是全局作用域，导致结果互相覆盖的情况
-            { test: /\.css$/, use:['style-loader', {
+            //一般第三方库的样式文件是以css结尾的，所以不能直接对css开启模块化，会影响其他第三方库的展示，这里只对scss进行开启模块化
+            // { test: /\.css$/, use:['style-loader', {
+            //     loader: 'css-loader',
+            //     options: {
+            //         importLoaders: 1,
+            //         modules: true,
+            //         //自定义css模块化后的class名称
+            //         // localIdentName: [name]-[local]-[hash:5]
+            //     }
+            // }] },
+            { test: /\.scss$/, use:['style-loader', {
                 loader: 'css-loader',
                 options: {
                     importLoaders: 1,
@@ -110,8 +122,7 @@ module.exports = {
                     //自定义css模块化后的class名称
                     // localIdentName: [name]-[local]-[hash:5]
                 }
-            }] },
-            { test: /\.scss$/, use:['style-loader', 'css-loader', 'sass-loader'] },
+            }, 'sass-loader'] },
             { test: /\.(png|gif|bmp|jpg)$/, use: 'url-loader?limit=500000' },
             { test: /\.jsx?$/, use:'babel-loader', exclude: /node_modules/ },
         ]

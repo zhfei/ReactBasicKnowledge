@@ -29,9 +29,19 @@ module.exports = {
     */
     module: {
         rules: [
-            // { test: /\.css$/, use:['style-loader', 'css-loader'] },
+            { test: /\.css$/, use:['style-loader', 'css-loader'] },
             //声明css模块化，使用CSS模块化解决多个css的作用域都是全局作用域，导致结果互相覆盖的情况
-            { test: /\.css$/, use:['style-loader', {
+            //一般第三方库的样式文件是以css结尾的，所以不能直接对css开启模块化，会影响其他第三方库的展示，这里只对scss进行开启模块化
+            // { test: /\.css$/, use:['style-loader', {
+            //     loader: 'css-loader',
+            //     options: {
+            //         importLoaders: 1,
+            //         modules: true,
+            //         //自定义css模块化后的class名称
+            //         // localIdentName: [name]-[local]-[hash:5]
+            //     }
+            // }] },
+            { test: /\.scss$/, use:['style-loader', {
                 loader: 'css-loader',
                 options: {
                     importLoaders: 1,
@@ -39,8 +49,7 @@ module.exports = {
                     //自定义css模块化后的class名称
                     // localIdentName: [name]-[local]-[hash:5]
                 }
-            }] },
-            { test: /\.scss$/, use:['style-loader', 'css-loader', 'sass-loader'] },
+            }, 'sass-loader'] },
             { test: /\.(png|gif|bmp|jpg)$/, use: 'url-loader?limit=500000' },
             { test: /\.jsx?$/, use:'babel-loader', exclude: /node_modules/ },
         ]

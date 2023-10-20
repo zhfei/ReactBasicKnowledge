@@ -10,6 +10,8 @@ import Home from "./components/Home.jsx";
 import About from "./components/About.jsx";
 import Movie from "./components/Movie.jsx";
 
+import { DatePicker } from 'antd';
+
 export default
 class App extends React.Component {
     constructor(props){
@@ -24,6 +26,7 @@ class App extends React.Component {
         //1.当使用了HashRouter把根组件APP包裹起来后，网站就启用路由了
         return <HashRouter>
             <div>
+            <DatePicker />
             <h2>这是根组件</h2>
             {/* 2.Link表示一个跳转链接 */}
             <hr></hr>
